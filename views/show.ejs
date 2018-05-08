@@ -1,0 +1,51 @@
+<% include partials/header %>
+
+<div class="container mt-5 mx-auto">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+      <div class="card mt-4">
+        <img
+          class="card-img-top img-fluid"
+          src="http://placehold.it/900x400"
+          alt=""/>
+        <div class="card-body">
+          <h3 class="card-title">Book Name: <%= book.bookName %></h3>
+          <h4>$123</h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing
+            elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id
+            dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias
+            iure, ducimus!</p>
+            <a class="btn btn-outline-success" href="/books/<%= book._id %>/edit">Edit</a>
+        </div>
+      </div>
+      <div class="card card-outline-secondary my-4">
+        <div class="card-header">
+          Product Reviews
+        </div>
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim
+            aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente
+            laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint
+            natus.</p>
+          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+          <hr/>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim
+            aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente
+            laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint
+            natus.</p>
+          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+          <hr/>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim
+            aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente
+            laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint
+            natus.</p>
+          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+          <hr/>
+          <button class="btn btn-success">Leave a Review</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/footer %>
