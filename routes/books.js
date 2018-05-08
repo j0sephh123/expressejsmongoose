@@ -4,6 +4,8 @@ const BooksController = require('../controllers/books');
 
 router.get('/', BooksController.books_get_books); // get all books
 
+router.get('/create', BooksController.books_create); // create
+
 router.post('/', BooksController.books_post_book); // create a book for now
 
 router.get('/:id', BooksController.books_show_book); // show only one book.

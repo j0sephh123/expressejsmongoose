@@ -7,9 +7,15 @@ exports.books_get_books = (req, res) => {
     .catch(error => res.send('error'));
 } // get all books
 
+exports.books_create = (req, res) => {
+  res.render('create');
+}
+
 exports.books_post_book = (req, res) => {
   let bookName = req.body.bookName;
-  const book = new Book({bookName})
+  let price = req.body.price;
+  let quantity = req.body.quantity;
+  const book = new Book({bookName, price, quantity})
     .save()
     .then(result => console.log(result))
     .catch(err => res.send(err));
@@ -19,7 +25,7 @@ exports.books_post_book = (req, res) => {
 exports.books_show_book  = (req, res) => {
   const id = req.params.id;
   let oneBook = Book.findById(id)
-    .select('bookName _id')
+    .select()
     .exec()
     .then(book => {
       console.log(book);
