@@ -1,25 +1,37 @@
 const mongoose = require('mongoose');
 const Book = require('../models/Book');
+const Category = require('../models/Category');
 
 exports.books_get_books = (req, res) => {
-  let data = Book.find({})
+  Book.find()
+    .populate("category", "categoryName")
+    .exec()
     .then(book => res.render('home', {book}))
     .catch(error => res.send('error'));
 } // get all books
 
 exports.books_create = (req, res) => {
-  res.render('create');
-}
+  Category.find({})
+    .then(category => res.render('create', {category}))
+    .catch(err => res.send(err));
+} // just show a form to create a book nothing more
 
 exports.books_post_book = (req, res) => {
-  let bookName = req.body.bookName;
-  let price = req.body.price;
-  let quantity = req.body.quantity;
-  const book = new Book({bookName, price, quantity})
-    .save()
-    .then(result => console.log(result))
+  Category.findOne({categoryName: req.body.categoryName})
+    .then(result => {
+      
+      let bookName = req.body.bookName;
+      let price = req.body.price;
+      let quantity = req.body.quantity;
+
+      const book = new Book({bookName, price, quantity, category: result._id})
+        .save()
+        .then(result => {
+          
+          res.redirect('/books');
+        })  
+    })
     .catch(err => res.send(err));
-  res.redirect('/books');
 } // create a book 
 
 exports.books_show_book  = (req, res) => {
@@ -72,3 +84,11 @@ exports.books_update_book = (req, res) => {
     })
     .catch(err => console.log(err));
 } // update
+
+
+
+
+
+
+
+

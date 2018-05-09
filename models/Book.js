@@ -8,12 +8,9 @@ const BookSchema = new Schema({
   price: {type: Schema.Types.Number, required: false},
   quantity: {type: Schema.Types.Number, required: false},
 
-  category: {type: Schema.Types.String, required: false},
-  pages: {type: Schema.Types.Number, required: false},
-  author: {type: Schema.Types.String, required: false},
-  read: {type: Schema.Types.Boolean, required: false},
-  published: {type: Schema.Types.Number, required: false},
-  comments: Schema.Types.Array
+  category: {type: Schema.Types.ObjectId, ref: 'Category', required: true},
+
+
 });
 
 const Book = mongoose.model('Book', BookSchema);
